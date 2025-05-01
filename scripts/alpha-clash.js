@@ -23,16 +23,24 @@ function handleKeyboardKeyUpEvent(event) {
         console.log('you got a point');
         // console.log('your have pressed correctly', expectedAlphabet);
 
+        const currentScore = getTextElementValueById('current-score');
+        console.log(currentScore);
+        const updatedScore = currentScore + 1;
+        setTextElementValueById('current-score', updatedScore);
+
+        // -------------------------
         // update score:
         // 1. get the current score
-        const currentScoreEelement = document.getElementById('current-socre');
-        const currentScoreText = currentScoreEelement.innerText;
-        const currentScore = parseInt(currentScoreText);
-        console.log(currentScore);
-        // 2. increase the score by 1
+        // const currentScoreEelement = document.getElementById('current-socre');
+        // const currentScoreText = currentScoreEelement.innerText;
+        // const currentScore = parseInt(currentScoreText);
+        // console.log(currentScore);
+
+        // // 2. increase the score by 1
         const newScore = currentScore + 1;
-        // 3. show the updated score
-        currentScoreEelement.innerText = newScore;
+
+        // // 3. show the updated score
+        // currentScoreEelement.innerText = newScore;
 
 
         // start a new round
@@ -40,8 +48,21 @@ function handleKeyboardKeyUpEvent(event) {
         continueGame();
     } else {
         console.log('dhur mia');
+
+        const currentLife = getTextElementValueById('current-life');
+        const updatedLife = currentLife - 1;
+        setTextElementValueById('current-life', updatedLife);
+
+        // step-1: get the current Life number
+        // const currentLifeElement = document.getElementById('current-life');
+        // const currentLifeText = currentLifeElement.innerText;
+        // const currentLife = parseInt(currentLifeText);
+        // // step-2: reduce life count
+        // const newLife = currentLife - 1;
+        // // step-3: display the updated life count
+        // currentLifeElement.innerText = newLife;
     }
-    console.log(event.key);
+    // console.log(event.key);
 }
 
 
