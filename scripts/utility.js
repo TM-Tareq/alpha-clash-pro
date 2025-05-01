@@ -29,7 +29,7 @@ function getARandomAlphabet() {
     const index = Math.round(randomNumber);
     
     const alphabet = alphabets[index];
-    console.log(index, alphabet);
+    // console.log(index, alphabet);
     return alphabet;
 
 }

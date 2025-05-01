@@ -10,15 +10,54 @@
 //     // console.log(playgroundSection.classList);
 // }
 
-function continueGame() {
-    // generate a random alphabet
-    const alphabet = getARandomAlphabet();
+function handleKeyboardKeyUpEvent(event) {
+    const playerPressed = event.key;
 
-    // set randomly generated alphabet to the screen (show it)
+    // key player is expected to press
+    const currentAlphabetElement = document.getElementById('current-alphabet');
+    const currentAlphabet =  currentAlphabetElement.innerText;
+    const expectedAlphabet = currentAlphabet.toLowerCase();
+
+    // check right or wrong key pressed
+    if(playerPressed === expectedAlphabet) {
+        console.log('you got a point');
+        // console.log('your have pressed correctly', expectedAlphabet);
+
+        // update score:
+        // 1. get the current score
+        const currentScoreEelement = document.getElementById('current-socre');
+        const currentScoreText = currentScoreEelement.innerText;
+        const currentScore = parseInt(currentScoreText);
+        console.log(currentScore);
+        // 2. increase the score by 1
+        const newScore = currentScore + 1;
+        // 3. show the updated score
+        currentScoreEelement.innerText = newScore;
+
+
+        // start a new round
+        removeBackgroundColorById(expectedAlphabet);
+        continueGame();
+    } else {
+        console.log('dhur mia');
+    }
+    console.log(event.key);
+}
+
+
+// capture keyboard key press
+document.addEventListener('keyup', handleKeyboardKeyUpEvent)
+
+function continueGame() {
+    // step-1: generate a random alphabet
+    const alphabet = getARandomAlphabet();
+    // console.log('Your random alphabet', alphabet);
+
+    // step-2: set randomly generated alphabet to the screen (show it)
     const currentAlphabetElement = document.getElementById('current-alphabet');
     currentAlphabetElement.innerText = alphabet;
 
-    // set backgroundcolor
+    // step-3: set backgroundcolor
     setBackgroundColorById(alphabet);
 
 }
